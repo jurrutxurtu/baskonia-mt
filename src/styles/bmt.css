@@ -80,7 +80,7 @@
   .drawer__close{position:absolute;top:22px;right:var(--pad);background:none;border:0;color:#fff;font-size:2rem;cursor:pointer;line-height:1}
 
   .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;color:#fff;overflow:hidden}
-  .hero__bg{position:absolute;inset:0;background:var(--black) url("/img/hero-bg.jpg") 62% 42%/cover no-repeat;z-index:0}
+  .hero__bg{position:absolute;inset:0;background:var(--black) var(--hero-bg, url("/img/hero-bg.jpg")) 62% 42%/cover no-repeat;z-index:0}
   .hero__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,14,12,.5),rgba(15,14,12,.15) 35%,rgba(15,14,12,.8))}
   .hero__inner{position:relative;z-index:3;max-width:var(--max);margin:0 auto;width:100%;padding:0 var(--pad) clamp(60px,10vw,110px)}
   .hero h1{font-size:clamp(3rem,12vw,8.5rem);max-width:14ch}

@@ -1,59 +1,106 @@
-# Baskonia Mendi Taldea · Web Oficial & Backoffice (1913tik mendian)
+# Baskonia Mendi Taldea · Web & Backoffice
 
-Proyecto web oficial y panel de gestión (**Backoffice**) de **Baskonia Mendi Taldea (Basauri)**, construido con **Astro** y **Supabase** (con modo de sincronización en vivo en local para demos sin necesidad de base de datos externa).
-
-## 🚀 Cómo arrancarlo en local (para la demo de hoy)
-
-> **Nota sobre PowerShell en Windows:** Si tu sistema tiene bloqueada la ejecución de scripts `npm.ps1`, usa `npm.cmd`:
-
-```powershell
-npm.cmd run dev
-```
-
-Esto levantará el servidor de desarrollo en:
-- **Web pública:** [http://localhost:4321/](http://localhost:4321/)
-- **Backoffice de gestión:** [http://localhost:4321/admin](http://localhost:4321/admin)
-
-### Guion recomendado para la demo en vivo con la directiva del club
-
-1. Abre en la mitad izquierda de tu pantalla la **Web Pública** (`http://localhost:4321/`) y en la mitad derecha el **Backoffice** (`http://localhost:4321/admin`).
-2. **Prueba 1 (Plazas en tiempo real):** En el Backoffice, busca la salida **Bardeak / Las Bardenas** y pulsa el botón **`+1 ocupada`** o cambia el selector de estado a **`🔴 Betea / Completo`**. Verás cómo en la web pública la etiqueta de plazas cambia **al instante** sin recargar la página.
-3. **Prueba 2 (Abrir una salida que estaba en "Laster / Próximamente"):** Busca **Castrovalnera**, cámbiala de `🕒 Laster / Próximamente` a `🟢 Inscripción abierta` y marca `Botón Inscribirse`. Al instante aparecerá el contador de plazas y el botón de inscripción en la tarjeta.
-4. **Prueba 3 (Inscripción en vivo + Excel):** En la web pública, haz clic en el botón **`Izena eman / Inscribirse`** de cualquier salida, rellena un nombre y envíalo. Verás cómo:
-   - Se descuenta automáticamente 1 plaza libre en la tarjeta de la actividad.
-   - Aparece la inscripción en la pestaña **2 · Izen-emateak (Inscripciones)** del Backoffice.
-   - Pulsando **`📥 Exportar a Excel / CSV`** se descarga el listado listo para abrir en Excel.
-5. **Prueba 4 (Stock de material de invierno y tienda):** En la pestaña **3 · Materiala, Denda eta Bulegoa**, resta unidades de *Kranpoiak* o márcalos como agotados, o cambia el horario de oficina del club.
+Plataforma web oficial y panel de administración (**Backoffice**) de **Baskonia Mendi Taldea** (Basauri · 1913), diseñada bajo una arquitectura *Jamstack / Serverless* de mantenimiento cero, bilingüe (Euskera / Castellano) y con soporte de aplicación instalable (PWA).
 
 ---
 
-## 📁 Estructura del proyecto desempaquetado
+## 🏗️ Arquitectura Objetivo
 
-El archivo monolítico original (`index-desired.html`, 10,2 MB con 66 imágenes incrustadas en Base64) se ha desempaquetado y modularizado en:
+```mermaid
+flowchart TB
+    subgraph Users["👥 Usuarios"]
+        Public["Mendizales y Socios<br/>(Web Pública & PWA)"]
+        Board["Junta Directiva BMT<br/>(Panel /admin)"]
+    end
+
+    subgraph DNS_CDN["🌐 Dominio y Distribución Estática"]
+        IONOS["IONOS DNS<br/>(baskoniamt.com)"]
+        Pages["GitHub Pages / Cloudflare Pages<br/>(Hosting Estático CDN + HTTPS)"]
+    end
+
+    subgraph Repo_CI["⚙️ Código y Automatización (GitOps)"]
+        GitHub["Repositorio GitHub<br/>(jurrutxurtu/baskonia-mt)"]
+        Actions["GitHub Actions<br/>(CI/CD Build Pipeline)"]
+        Astro["Astro 5 + TypeScript<br/>(Generador Web & Componentes)"]
+    end
+
+    subgraph Backend_Data["🗄️ Persistencia y Servicios (BaaS)"]
+        Supabase["Supabase Cloud<br/>(PostgreSQL + RLS + Auth)"]
+        LocalSync["Fallback Local / Demo<br/>(LocalStorage + BroadcastChannel)"]
+    end
+
+    GitHub -->|"git push a main"| Actions
+    Actions -->|"Compila con Astro"| Astro
+    Astro -->|"Despliega artefacto dist/"| Pages
+    IONOS -.->|"Registros A / CNAME"| Pages
+
+    Public -->|"1. Carga HTML/CSS/Img ultrarrápido"| Pages
+    Board -->|"1. Accede al Backoffice (/admin)"| Pages
+
+    Public <-->|"2. Consulta plazas e inserta inscripciones"| Supabase
+    Board <-->|"2. Gestiona salidas, plazas, material y exporta CSV"| Supabase
+
+    Public <-.->|"Sincronización en vivo sin backend"| LocalSync
+    Board <-.->|"Sincronización en vivo sin backend"| LocalSync
+```
+
+---
+
+## 🧩 Rol de cada elemento y tecnología
+
+| Elemento / Tecnología | Rol dentro de la arquitectura |
+| :--- | :--- |
+| **[Astro](https://astro.build/) + TypeScript** | **Framework Web y Generador Estático (SSG).** Estructura la web en páginas (`/` y `/admin`), componentes reutilizables (`Modals.astro`), estilos limpios y módulos tipados de datos (`bmtDefaultData.ts`, `i18n.ts`), generando HTML estático ligero sin sobrecarga innecesaria en el navegador. |
+| **GitHub (`jurrutxurtu/baskonia-mt`)** | **Fuente única de verdad del código y activos estáticos.** Almacena el código fuente, las fotografías históricas/anuales optimizadas (`public/img/`), el esquema SQL (`supabase/schema.sql`) y la definición del pipeline de despliegue. |
+| **GitHub Actions (`deploy.yml`)** | **Pipeline CI/CD automatizado.** Ante cada `push` a la rama `main`, levanta un entorno Node.js limpio, instala dependencias (`npm ci`), compila el proyecto con Astro (`npm run build`) inyectando la ruta base y variables de entorno, y publica el artefacto resultante. |
+| **GitHub Pages / Cloudflare Pages** | **Hosting Estático Global (CDN) y SSL.** Sirve los archivos estáticos compilados (`dist/`) con alta disponibilidad, coste 0 € y renovación automática de certificados HTTPS, eliminando la necesidad de mantener servidores PHP/Apache o actualizar plugins como en WordPress. |
+| **Supabase (PostgreSQL + RLS)** | **Backend-as-a-Service (Base de datos en tiempo real).** Almacena los datos dinámicos que cambian sin necesidad de recompilar la web: salidas y cursos (`activities`), contador de plazas ocupadas, inscripciones de socios (`izena_emateak`), disponibilidad del material de invierno (`materials`), rutas de Wikiloc (`wikiloc_routes`) y ajustes del club (`site_settings`). |
+| **Capa Híbrida (`bmtStore.ts`)** | **Adaptador de datos con modo autónomo.** Abstrae el acceso a datos: si las credenciales de Supabase están configuradas, opera contra PostgreSQL en la nube; si no están definidas, funciona automáticamente contra `localStorage` y `BroadcastChannel`, permitiendo probar y demostrar toda la interactividad en vivo en GitHub Pages o en local sin base de datos externa. |
+| **jsPDF + PWA (`manifest.json` / `sw.js`)** | **Servicios en cliente.** Generación instantánea en el navegador de los resguardos en PDF para el simulador de licencias de la federación (EMF) y presupuestos del refugio de Iondokorta, además de instalación de la web como aplicación móvil/escritorio con caché offline. |
+| **IONOS (`baskoniamt.com`)** | **Registrador del dominio y correo.** Mantiene la titularidad del dominio `baskoniamt.com` y sus registros de correo (`MX`), delegando únicamente el tráfico web (`A` / `CNAME`) hacia el CDN estático. |
+
+---
+
+## 📁 Estructura del repositorio
 
 ```text
 baskoniamt/
-├── .github/workflows/deploy.yml   # CI/CD automático con GitHub Actions
+├── .github/workflows/deploy.yml   # Pipeline CI/CD para publicación automática en GitHub Pages
 ├── public/
-│   ├── img/                       # 65 imágenes extraídas de Base64 (logo, hero, aterpea, galeria 2025/2026, material, docs)
-│   ├── manifest.json              # Manifiesto PWA para instalar la app en móvil/PC
-│   └── sw.js                      # Service Worker offline
+│   ├── img/                       # Activos gráficos organizados (aterpea, galeria 2025/2026, materiala, denda, docs)
+│   ├── manifest.json              # Manifiesto Web App (PWA)
+│   └── sw.js                      # Service Worker para soporte offline
 ├── src/
 │   ├── components/
-│   │   └── Modals.astro           # Modales estáticos (Historia 1913-2026, Escudo, Aterpea, Simuladores PDF, Inscripción)
+│   │   └── Modals.astro           # Modales informativos, simuladores de tarifas y formulario de inscripción
 │   ├── data/
-│   │   ├── bmtDefaultData.ts      # Datos estructurados bilingües (EU/ES) de salidas, cursos, material y Wikiloc
-│   │   └── i18n.ts                # Diccionario de traducción Euskera <-> Castellano
+│   │   ├── bmtDefaultData.ts      # Modelo de datos tipado y semilla inicial bilingüe (EU/ES)
+│   │   └── i18n.ts                # Diccionario de internacionalización Euskera <-> Castellano
 │   ├── lib/
-│   │   └── bmtStore.ts            # Capa de datos híbrida (Supabase Cloud + LocalStorage/BroadcastChannel en vivo)
+│   │   └── bmtStore.ts            # Cliente híbrido (Supabase Cloud / Sincronización Local en vivo)
 │   ├── scripts/
-│   │   ├── homeClient.ts          # Lógica cliente de la web pública
-│   │   └── adminClient.ts         # Lógica cliente del Backoffice (/admin)
+│   │   ├── homeClient.ts          # Controlador cliente de la web pública
+│   │   └── adminClient.ts         # Controlador cliente del Backoffice (/admin)
 │   ├── styles/
-│   │   └── bmt.css                # Hoja de estilos limpia (sin Base64 incrustado)
+│   │   └── bmt.css                # Sistema de diseño y estilos globales
 │   └── pages/
-│       ├── index.astro            # Web pública principal (/)
-│       └── admin.astro            # Panel de administración (/admin)
+│       ├── index.astro            # Portal público principal (/)
+│       └── admin.astro            # Backoffice de gestión del club (/admin)
 └── supabase/
-    └── schema.sql                 # Esquema SQL + Políticas RLS listo para ejecutar en Supabase
+    └── schema.sql                 # DDL de tablas e índices + Políticas Row Level Security (RLS)
+```
+
+---
+
+## 🛠️ Desarrollo local
+
+```bash
+# Instalar dependencias
+npm install
+
+# Iniciar servidor de desarrollo en http://localhost:4321
+npm run dev
+
+# Generar build estático de producción en ./dist
+npm run build
 ```

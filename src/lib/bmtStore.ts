@@ -1,3 +1,12 @@
+export function withBase(p: string): string {
+  if (!p || p.startsWith('http') || p.startsWith('data:')) return p;
+  const rawBase = import.meta.env.BASE_URL || '/';
+  const base = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
+  const clean = p.startsWith('/') ? p : '/' + p;
+  if (base && clean.startsWith(base + '/')) return clean;
+  return base + clean;
+}
+
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import {
   DEFAULT_BMT_DATA,

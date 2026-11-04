@@ -6,6 +6,7 @@ import {
   addRegistration,
   getSupabaseConfig,
   setSupabaseConfig,
+  withBase,
   type BmtStoreData,
   type ActivityItem
 } from '../lib/bmtStore';
@@ -114,7 +115,7 @@ export function initAdminClient(): void {
         return `
         <article class="adm-act-card" data-id="${escapeHtml(a.id)}">
           <div class="adm-act-thumb" style="background-image:url('${escapeHtml(
-            a.image || '/img/hero-bg.jpg'
+            withBase(a.image || '/img/hero-bg.jpg')
           )}')">
             <span class="adm-cat-pill">${escapeHtml(catLabel)}</span>
           </div>
@@ -571,7 +572,7 @@ export function initAdminClient(): void {
       .map(
         (m) => `
       <div class="adm-mat-card">
-        <img src="${escapeHtml(m.image)}" alt="${escapeHtml(m.name_eu)}">
+        <img src="${escapeHtml(withBase(m.image))}" alt="${escapeHtml(m.name_eu)}">
         <div class="adm-mat-body">
           <h3>${escapeHtml(m.name_eu)} <small>/ ${escapeHtml(m.name_es)}</small></h3>
           <div class="adm-mat-row">

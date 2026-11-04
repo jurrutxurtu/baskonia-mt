@@ -3,6 +3,7 @@ import {
   loadStore,
   subscribeStore,
   addRegistration,
+  withBase,
   type BmtStoreData,
   type ActivityItem
 } from '../lib/bmtStore';
@@ -486,7 +487,7 @@ export function initHomeClient(): void {
           const canReg = c.registration_enabled && c.status === 'open' && badge.available > 0;
           return `
           <article class="card reveal in" data-act="${escapeHtml(c.id)}" data-i18n-skip="true" style="cursor:pointer">
-            <div class="card__img" style="background-image:url('${escapeHtml(c.image)}')"></div>
+            <div class="card__img" style="background-image:url('${escapeHtml(withBase(c.image))}')"></div>
             <div class="card__body">
               <h3>${escapeHtml(title)}</h3>
               <p>${escapeHtml(summary)}</p>
@@ -536,7 +537,7 @@ export function initHomeClient(): void {
                 </div>`
               : '';
           return `
-          <article class="route reveal in" data-act="${escapeHtml(r.id)}" data-i18n-skip="true" style="background-image:url('${escapeHtml(r.image)}');cursor:pointer">
+          <article class="route reveal in" data-act="${escapeHtml(r.id)}" data-i18n-skip="true" style="background-image:url('${escapeHtml(withBase(r.image))}');cursor:pointer">
             <div class="route__top">
               <span class="route__tag">${escapeHtml(dateTag)}</span>
               ${badge.text ? `<span class="${badge.cls}">${escapeHtml(badge.text)}</span>` : ''}
@@ -577,7 +578,7 @@ export function initHomeClient(): void {
           const dateTag = LANG === 'es' ? j.date_badge_es || j.date_badge_eu : j.date_badge_eu;
           const badge = formatSeatBadge(j);
           return `
-          <article class="route reveal in" data-act="${escapeHtml(j.id)}" data-i18n-skip="true" style="background-image:url('${escapeHtml(j.image)}');cursor:pointer">
+          <article class="route reveal in" data-act="${escapeHtml(j.id)}" data-i18n-skip="true" style="background-image:url('${escapeHtml(withBase(j.image))}');cursor:pointer">
             <div class="route__top">
               <span class="route__tag">${escapeHtml(dateTag)}</span>
               ${badge.text ? `<span class="${badge.cls}">${escapeHtml(badge.text)}</span>` : ''}
@@ -691,7 +692,7 @@ export function initHomeClient(): void {
               : 'Agortuta';
           return `
           <div class="mat-card" data-i18n-skip="true">
-            <img src="${escapeHtml(m.image)}" alt="${escapeHtml(name)}">
+            <img src="${escapeHtml(withBase(m.image))}" alt="${escapeHtml(name)}">
             <div class="mat-card__b">
               <div>
                 <h3>${escapeHtml(name)}</h3>
@@ -797,7 +798,7 @@ export function initHomeClient(): void {
     });
 
     if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
-      addEventListener('load', () => navigator.serviceWorker.register('/sw.js').catch(() => {}));
+      addEventListener('load', () => navigator.serviceWorker.register(withBase('/sw.js')).catch(() => {}));
     }
   })();
 

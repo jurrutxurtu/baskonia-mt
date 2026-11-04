@@ -1,3 +1,7 @@
+---
+const rawBase = import.meta.env.BASE_URL || '/';
+const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
+---
 <div class="lightbox" id="lightbox"><button class="lightbox__close" id="lbClose" aria-label="Itxi">&times;</button><img src="" alt="" id="lbImg"></div>
 
 <div class="modal" id="history" role="dialog" aria-modal="true" aria-labelledby="histTitle">
@@ -101,7 +105,7 @@
     </div>
     <div class="armarri-layout">
       <figure class="armarri-fig">
-        <img src="/img/armarria-bilakaera.jpg" alt="Baskonia Mendi Taldearen armarriaren bilakaera 1913tik 2026ra" loading="lazy">
+        <img src={`${base}img/armarria-bilakaera.jpg`} alt="Baskonia Mendi Taldearen armarriaren bilakaera 1913tik 2026ra" loading="lazy">
         <figcaption>Armarriaren bilakaera, 1913ko sorreratik gaur egunera arte.</figcaption>
       </figure>
       <div class="hist-timeline">
@@ -241,10 +245,10 @@
     <button class="modal__close" data-close aria-label="Itxi">&times;</button>
     <div class="hist-head"><span class="kicker">2026</span><h3>Federatzeko prezioak</h3>
       <p class="dt-lead">EMFren aisialdi-txartela eta federazio-lizentziaren prezioak. Sakatu irudia handitzeko.</p></div>
-    <figure class="cal-page" style="margin:0"><img src="/img/docs/BMT-federatzeko-prezioak-2026.jpg" alt="2026ko EMF federazio-lizentziaren prezioak" loading="lazy"></figure>
+    <figure class="cal-page" style="margin:0"><img src={`${base}img/docs/BMT-federatzeko-prezioak-2026.jpg`} alt="2026ko EMF federazio-lizentziaren prezioak" loading="lazy"></figure>
     <div class="hist-foot" style="display:flex;flex-wrap:wrap;gap:.8rem;align-items:center;justify-content:space-between">
       <span>Prezio-taula osoa deskarga dezakezu.</span>
-      <a class="btn btn--primary" href="/img/docs/BMT-federatzeko-prezioak-2026.jpg" download="BMT-federatzeko-prezioak-2026.jpg">Deskargatu</a>
+      <a class="btn btn--primary" href={`${base}img/docs/BMT-federatzeko-prezioak-2026.jpg`} download="BMT-federatzeko-prezioak-2026.jpg">Deskargatu</a>
     </div>
   </div>
 </div>
@@ -288,15 +292,15 @@
     </div>
     <div class="cal-pages">
       <figure class="cal-page">
-        <img src="/img/docs/BMT-egutegia-2026.jpg" alt="Egutegia 2026 — Baskonia Mendi Taldea 2026" loading="lazy">
+        <img src={`${base}img/docs/BMT-egutegia-2026.jpg`} alt="Egutegia 2026 — Baskonia Mendi Taldea 2026" loading="lazy">
         <figcaption><span>Egutegia 2026</span></figcaption>
       </figure>
       <figure class="cal-page">
-        <img src="/img/docs/BMT-bilerak-formazioak-jardunaldiak-2026.jpg" alt="Bilerak, formazioak eta jardunaldiak — Baskonia Mendi Taldea 2026" loading="lazy">
+        <img src={`${base}img/docs/BMT-bilerak-formazioak-jardunaldiak-2026.jpg`} alt="Bilerak, formazioak eta jardunaldiak — Baskonia Mendi Taldea 2026" loading="lazy">
         <figcaption><span>Bilerak, formazioak eta jardunaldiak</span></figcaption>
       </figure>
       <figure class="cal-page">
-        <img src="/img/docs/BMT-irteerak-2026.jpg" alt="Irteerak / Salidas — Baskonia Mendi Taldea 2026" loading="lazy">
+        <img src={`${base}img/docs/BMT-irteerak-2026.jpg`} alt="Irteerak / Salidas — Baskonia Mendi Taldea 2026" loading="lazy">
         <figcaption><span>Irteerak / Salidas</span></figcaption>
       </figure>
     </div>

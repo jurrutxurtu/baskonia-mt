@@ -21,6 +21,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -32,6 +36,8 @@ jobs:
 
       - name: Build Astro site
         env:
+          SITE_URL: ${{ steps.pages.outputs.origin }}
+          BASE_PATH: ${{ steps.pages.outputs.base_path }}
           PUBLIC_SUPABASE_URL: ${{ secrets.PUBLIC_SUPABASE_URL }}
           PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.PUBLIC_SUPABASE_ANON_KEY }}
         run: npm run build
