@@ -1,6 +1,6 @@
 # Baskonia Mendi Taldea · Web & Backoffice
 
-Plataforma web oficial y panel de administración (**Backoffice**) de **Baskonia Mendi Taldea** (Basauri · 1913), diseñada bajo una arquitectura *Jamstack / Serverless* de mantenimiento cero, bilingüe (Euskera / Castellano) y con soporte de aplicación instalable (PWA).
+Plataforma web oficial y panel de administración (**Backoffice**) de **Baskonia Mendi Taldea** (Basauri · 1913), diseñada bajo una arquitectura *Jamstack / Serverless* de mantenimiento cero, bilingüe (Euskera / Castellano) y con soporte de aplicación instalable (PWA).adFSD
 
 ---
 
