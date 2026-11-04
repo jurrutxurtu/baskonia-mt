@@ -26,7 +26,7 @@ flowchart TB
 
     subgraph Backend_Data["🗄️ Persistencia y Servicios (BaaS)"]
         Supabase["Supabase Cloud<br/>(PostgreSQL + RLS + Auth)"]
-        LocalSync["Fallback Local / Demo<br/>(LocalStorage + BroadcastChannel)"]
+        LocalSync["Almacenamiento Local<br/>(LocalStorage + BroadcastChannel)"]
     end
 
     GitHub -->|"git push a main"| Actions
@@ -55,7 +55,7 @@ flowchart TB
 | **GitHub Actions (`deploy.yml`)** | **Pipeline CI/CD automatizado.** Ante cada `push` a la rama `main`, levanta un entorno Node.js limpio, instala dependencias (`npm ci`), compila el proyecto con Astro (`npm run build`) inyectando la ruta base y variables de entorno, y publica el artefacto resultante. |
 | **GitHub Pages / Cloudflare Pages** | **Hosting Estático Global (CDN) y SSL.** Sirve los archivos estáticos compilados (`dist/`) con alta disponibilidad, coste 0 € y renovación automática de certificados HTTPS, eliminando la necesidad de mantener servidores PHP/Apache o actualizar plugins como en WordPress. |
 | **Supabase (PostgreSQL + RLS)** | **Backend-as-a-Service (Base de datos en tiempo real).** Almacena los datos dinámicos que cambian sin necesidad de recompilar la web: salidas y cursos (`activities`), contador de plazas ocupadas, inscripciones de socios (`izena_emateak`), disponibilidad del material de invierno (`materials`), rutas de Wikiloc (`wikiloc_routes`) y ajustes del club (`site_settings`). |
-| **Capa Híbrida (`bmtStore.ts`)** | **Adaptador de datos con modo autónomo.** Abstrae el acceso a datos: si las credenciales de Supabase están configuradas, opera contra PostgreSQL en la nube; si no están definidas, funciona automáticamente contra `localStorage` y `BroadcastChannel`, permitiendo probar y demostrar toda la interactividad en vivo en GitHub Pages o en local sin base de datos externa. |
+| **Capa Híbrida (`bmtStore.ts`)** | **Adaptador de datos con almacenamiento local.** Abstrae el acceso a datos: si las credenciales de Supabase están configuradas, opera contra PostgreSQL en la nube; si no están definidas, persiste y sincroniza mediante `localStorage` y `BroadcastChannel`. |
 | **jsPDF + PWA (`manifest.json` / `sw.js`)** | **Servicios en cliente.** Generación instantánea en el navegador de los resguardos en PDF para el simulador de licencias de la federación (EMF) y presupuestos del refugio de Iondokorta, además de instalación de la web como aplicación móvil/escritorio con caché offline. |
 | **IONOS (`baskoniamt.com`)** | **Registrador del dominio y correo.** Mantiene la titularidad del dominio `baskoniamt.com` y sus registros de correo (`MX`), delegando únicamente el tráfico web (`A` / `CNAME`) hacia el CDN estático. |
 

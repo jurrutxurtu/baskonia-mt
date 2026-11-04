@@ -677,20 +677,14 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
         </div>
       </div>
       <div class="adm-header__actions">
-        <span class="conn-pill" id="connBadge">Modo Demo Local · Sincronización en Vivo</span>
-        <a href={base} target="_blank" class="btn-adm btn-adm--primary">Ver Web Pública (/) ↗</a>
-        <button type="button" id="resetDemoBtn" class="btn-adm btn-adm--ghost">Restaurar datos originales</button>
+        <span class="conn-pill" id="connBadge">Almacenamiento Local</span>
+        <a href={base} target="_blank" class="btn-adm btn-adm--primary">Webgunea ikusi ↗</a>
+        <button type="button" id="resetDemoBtn" class="btn-adm btn-adm--ghost">Restablecer datos</button>
       </div>
     </div>
   </header>
 
   <main class="adm-wrap">
-    <div class="adm-banner">
-      <p>
-        <b>💡 Tip para enseñar a tus amigos del club:</b> Abre <a href={base} target="_blank" style="text-decoration:underline;font-weight:800">la web pública (/) en otra ventana al lado</a>. Cualquier cambio que hagas aquí en las plazas, estado (<i>Abierta / Completo / Próximamente</i>), nuevas salidas, material o inscripciones se refleja <b>en tiempo real al instante</b> en la web sin recargar.
-      </p>
-    </div>
-
     <section class="adm-kpis" aria-label="Resumen del club">
       <div class="adm-kpi">
         <div class="adm-kpi__val" id="kpiActs">10</div>
@@ -748,7 +742,7 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
           <select id="regActFilter" name="activity_filter" class="adm-select"></select>
         </div>
         <div style="display:flex;gap:.6rem;flex-wrap:wrap">
-          <button type="button" id="simRegBtn" class="btn-adm btn-adm--edit">+ Simular inscripción de prueba</button>
+          <button type="button" id="simRegBtn" class="btn-adm btn-adm--edit">+ Alta rápida en oficina</button>
           <button type="button" id="exportCsvBtn" class="btn-adm btn-adm--primary">📥 Exportar a Excel / CSV</button>
         </div>
       </div>
@@ -869,9 +863,9 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
         <div class="adm-card-box">
           <form id="supaConfigForm" action={`${base}admin`} method="POST">
             <fieldset>
-              <legend>Conexión en la Nube con Supabase (Opcional)</legend>
+              <legend>Conexión con Supabase</legend>
               <p style="font-size:.88rem;color:var(--muted);margin-bottom:1rem">
-                Por defecto el prototipo funciona en local sincronizando pestañas en vivo. Cuando creéis el proyecto gratuito en <b>supabase.com</b> y ejecutéis el archivo <code>supabase/schema.sql</code> incluido en este repositorio, podéis pegar aquí las credenciales (o en el archivo <code>.env</code>):
+                Configuración de acceso al proyecto de Supabase (<code>supabase/schema.sql</code>). También puede definirse mediante variables de entorno (<code>.env</code>).
               </p>
               <div class="f-group">
                 <label for="supa-url">SUPABASE_URL</label>

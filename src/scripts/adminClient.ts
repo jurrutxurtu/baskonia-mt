@@ -84,10 +84,10 @@ export function initAdminClient(): void {
     const supaCfg = getSupabaseConfig();
     const modeBadge = document.getElementById('connBadge')!;
     if (supaCfg) {
-      modeBadge.textContent = 'Conectado a Supabase (' + new URL(supaCfg.url).hostname + ')';
+      modeBadge.textContent = 'Supabase (' + new URL(supaCfg.url).hostname + ')';
       modeBadge.classList.add('supa');
     } else {
-      modeBadge.textContent = 'Modo Demo Local · Sincronización en Vivo';
+      modeBadge.textContent = 'Almacenamiento Local';
       modeBadge.classList.remove('supa');
     }
   }
@@ -437,7 +437,7 @@ export function initAdminClient(): void {
 
     const tbody = document.getElementById('regTableBody')!;
     if (!rows.length) {
-      tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;padding:2rem;color:var(--muted)">No hay inscripciones para este filtro. Prueba a inscribirte desde la web pública o pulsa "+ Simular inscripción".</td></tr>`;
+      tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;padding:2rem;color:var(--muted)">No hay inscripciones registradas para este filtro.</td></tr>`;
       return;
     }
 
@@ -510,7 +510,7 @@ export function initAdminClient(): void {
       nan: pick[2],
       jaiotza: '1992-07-15',
       telefonoa: '688 554 433',
-      eposta: pick[0].toLowerCase() + '@baskoniamt-demo.eus',
+      eposta: pick[0].toLowerCase() + '@baskoniamt.com',
       bazkidea: true,
       bazkide_zenbakia: pick[3],
       oharrak: pick[4]
@@ -730,12 +730,12 @@ export function initAdminClient(): void {
     showToast(url ? 'Conexión a Supabase guardada' : 'Modo Demo Local activado');
   });
 
-  /* ===== RESET DEMO BUTTON ===== */
+  /* ===== RESET DATA BUTTON ===== */
   document.getElementById('resetDemoBtn')!.onclick = () => {
-    if (confirm('¿Quieres restaurar todos los datos originales de la demo (salidas, plazas, inscripciones y material)?')) {
+    if (confirm('¿Quieres restablecer todos los datos a los valores iniciales?')) {
       store = resetStoreToDefaults();
       renderAll();
-      showToast('Datos originales de Baskonia Mendi Taldea restaurados');
+      showToast('Datos restablecidos');
     }
   };
 

@@ -253,12 +253,7 @@ export function initHomeClient(): void {
       fOk.style.display = 'block';
       const subEl = document.querySelector('#fichaOk .sub');
       if (subEl) {
-        subEl.textContent =
-          res.mode === 'supabase'
-            ? window.T('Zure izen-ematea jaso dugu. Eskerrik asko.')
-            : LANG === 'es'
-              ? '¡Inscripción registrada en vivo! Ya puedes verla en el Backoffice (/admin) y ver cómo se ha descontado 1 plaza.'
-              : 'Izen-ematea zuzenean gorde da! Dagoeneko Backoffice-an (/admin) ikus dezakezu eta plaza 1 jaitsi da.';
+        subEl.textContent = window.T('Zure izen-ematea jaso dugu. Eskerrik asko.');
       }
     } catch (e: any) {
       alert('Errorea: ' + e.message);
