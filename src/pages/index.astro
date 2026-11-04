@@ -1,0 +1,496 @@
+---
+import '../styles/bmt.css';
+import Modals from '../components/Modals.astro';
+---
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#171513">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="BMT">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+  <title>Baskonia Mendi Taldea · 1913tik mendian</title>
+  <meta name="description" content="Baskonia Mendi Taldea — Basauriko mendizale elkartea, 1913tik. Ikastaroak, irteerak, jardunaldiak, aterpea, material alokairua eta federazioa.">
+  <link rel="icon" href="/img/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<header id="header">
+  <nav class="nav">
+    <div class="menu menu--l">
+      <a href="#hasiera">Hasiera</a>
+      <a href="#nor-gara">Nortzuk gara</a>
+      <a href="#ikastaroak">Ikastaroak</a>
+      <a href="#irteerak">Irteerak</a>
+      <a href="#jardunaldiak">Jardunaldiak</a>
+      <a href="#wikiloc">Wikiloc</a>
+      <a href="#egutegia">Egutegia</a>
+    </div>
+    <a href="#hasiera" class="brand brand--logo-only" aria-label="BMT hasiera">
+      <span class="brand__logo" role="img" aria-label="BMT logoa"></span>
+    </a>
+    <div class="menu menu--r">
+      <a href="#aterpea">Aterpea</a>
+      <a href="#materiala">Materiala</a>
+      <a href="#arropa">Denda</a>
+      <a href="#galeria">Galeria</a>
+      <a href="#federazioa">Federazioa</a>
+      <a href="#bus-geltokiak">Bus geltokiak</a>
+      <a href="#harremana">Harremana</a>
+      <div class="langsw langsw--d" role="group" aria-label="Hizkuntza / Idioma"><button type="button" data-lang="eu" aria-pressed="true">EUS</button><button type="button" data-lang="es" aria-pressed="false">CAST</button></div>
+    </div>
+    <div class="langsw langsw--m" role="group" aria-label="Hizkuntza / Idioma"><button type="button" data-lang="eu" aria-pressed="true">EUS</button><button type="button" data-lang="es" aria-pressed="false">CAST</button></div>
+    <button class="burger" id="burger" aria-label="Menua ireki"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+<div class="drawer" id="drawer">
+  <button class="drawer__close" id="drawerClose" aria-label="Itxi">&times;</button>
+  <div class="langsw langsw--drawer" role="group" aria-label="Hizkuntza / Idioma"><button type="button" data-lang="eu" aria-pressed="true">EUS</button><button type="button" data-lang="es" aria-pressed="false">CAST</button></div>
+  <a href="#hasiera">Hasiera</a><a href="#nor-gara">Nortzuk gara</a><a href="#ikastaroak">Ikastaroak</a><a href="#irteerak">Irteerak</a><a href="#jardunaldiak">Jardunaldiak</a>
+  <a href="#wikiloc">Wikiloc</a><a href="#egutegia">Egutegia</a><a href="#aterpea">Aterpea</a>
+  <a href="#materiala">Materiala</a><a href="#arropa">Denda</a><a href="#galeria">Galeria</a>
+  <a href="#federazioa">Federazioa</a><a href="#bus-geltokiak">Bus geltokiak</a><a href="#app">Aplikazioa</a><a href="#harremana">Harremana</a>
+</div>
+
+<section class="hero" id="hasiera">
+  <div class="hero__bg"></div>
+  <svg class="topo" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true" style="opacity:.16;z-index:2">
+    <path d="M-50,420 C200,360 420,470 650,410 C880,350 1050,440 1260,390" stroke="#fff"/>
+    <path d="M-50,470 C200,415 420,520 650,460 C880,400 1050,490 1260,440" stroke="#fff"/>
+    <path d="M-50,520 C200,470 420,565 650,510 C880,455 1050,540 1260,495" stroke="#fff"/>
+  </svg>
+  <div class="hero__inner reveal">
+    <span class="kicker">1913tik mendian</span>
+    <h1>Baskonia Mendi Taldea</h1>
+    <p class="hero__sub">Basauriko mendizale elkartea. Mendia, kirola eta natura, denon eskura.</p>
+    <div class="hero__office"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span id="heroOfficeText" data-i18n-skip="true"><b>Bulegoa</b> asteazkenetan zabalik · 19:00 – 21:00</span></div>
+    <div class="hero__cta"><button class="btn btn--primary" id="historyBtn" aria-haspopup="dialog">Gure historia</button><button class="btn btn--ghost-y" id="armarriaBtn" aria-haspopup="dialog">Armarriaren historia</button></div>
+  </div>
+  <div class="hero__scroll">Behera ↓</div>
+</section>
+
+<section class="band band--cream" id="nor-gara">
+  <div class="band__inner">
+    <div class="twocol">
+      <div class="reveal"><span class="kicker">Nortzuk gara</span><h2>Mende bat baino<br>gehiago mendian</h2>
+        <figure class="norgara-logo"><div class="norgara-logo__plate" role="img" aria-label="Baskonia Mendi Taldearen armarri ofiziala"></div><figcaption>Baskonia Mendi Taldea · 1913</figcaption></figure>
+      </div>
+      <div class="reveal">
+        <p>Baskonia Mendi Taldea 1913an sortu zen Basaurin, Bizkaiko mendi-elkarte historikoenetako bat. Mende bat baino gehiagoko ibilbidean, mendiarekiko zaletasuna belaunaldiz belaunaldi zabaltzen jardun dugu: irteerak, ikastaroak, jardunaldiak eta Iondokorta aterpea, denon ondare.</p>
+        <p style="margin-top:1rem">Etorri, ezagutu gaitzazu eta egin bidea gurekin.</p>
+        <div class="stats stats--2 stats--inline">
+          <div class="stat"><div class="stat__num" data-target="1913">1913</div><div class="stat__label">Sortze-urtea</div></div>
+          <div class="stat"><div class="stat__num" data-target="1000" data-suffix="+">0</div><div class="stat__label">Bazkideak</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band band--cream-2" id="ikastaroak">
+  <div class="band__inner">
+    <div class="head reveal">
+      <span class="kicker">Ikastaroak</span><h2>Datozen<br>ikastaroak</h2>
+      <p>Hurrengo ikastaroak eta izena emateko zabalik daudenak. Tokiak mugatuak dira; izena aldez aurretik eman behar da.</p>
+    </div>
+    <div class="grid-cards" id="ikastaroakGrid">
+      <article class="card reveal">
+        <div class="card__img" style="background-image:url('https://images.unsplash.com/photo-1522163182402-834f871fd851?w=700&q=80&auto=format&fit=crop')"></div>
+        <div class="card__body">
+          <h3>Eskaladako hastapena</h3>
+          <p>Eskalada-teknika oinarrizkoak, segurtasuna eta lehen igoerak gidari batekin.</p>
+          <div class="card__foot">
+            <span class="lekuak" data-act="ik-eskalada-hastapena-2026" data-cap="20">20 plaza</span>
+          </div>
+        </div>
+      </article>
+      <article class="card reveal">
+        <div class="card__img" style="background-image:url('https://images.unsplash.com/photo-1551524559-8af4e6624178?w=700&q=80&auto=format&fit=crop')"></div>
+        <div class="card__body">
+          <h3>Eskaladako autoerreskatea</h3>
+          <p>Larrialdietan jarduteko teknikak: maniobrak, jaitsierak eta erreskate-sistemak.</p>
+          <div class="card__foot">
+            <span class="lekuak" data-act="ik-autoerreskatea-2026" data-cap="16">16 plaza</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band band--cream-3" id="irteerak">
+  <div class="band__inner">
+    <div class="head reveal"><span class="kicker">Irteerak</span><h2>Datozen<br>irteerak</h2>
+      <p>Aurten geratzen diren irteerak. Talde giroan, segurtasunez eta natura zainduz. Izena emateko lekuak mugatuak dira.</p>
+    </div>
+    <div class="routes" id="irteerakGrid">
+      <article class="route reveal" style="background-image:url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=900&q=80&auto=format&fit=crop')">
+        <div class="route__top"><span class="route__tag">Iraila 12–13</span><span class="lekuak" data-act="ir-bidarrai-2026" data-cap="35">40 plaza</span></div>
+        <h3>Iparraldeko ehun mendiak</h3><p>Iparla (1.044 m) eta Behorlegi (1.265 m) inguruko irteera, Ipar Euskal Herrian.</p>
+      </article>
+      <article class="route reveal" style="background-image:url('https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=900&q=80&auto=format&fit=crop')">
+        <div class="route__top"><span class="route__tag">Iraila 20</span></div>
+        <h3>Oroimenaren eguna Besaiden</h3><p>Besaideko oroimen-eguna, mendizaleak gogoratzeko urteroko hitzordua.</p>
+      </article>
+      <article class="route reveal" style="background-image:url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=900&q=80&auto=format&fit=crop')">
+        <div class="route__top"><span class="route__tag">Urria 3–4</span><span class="lekuak" data-act="ir-bardenak-2026" data-cap="35">45 plaza</span></div>
+        <h3>Bardeak</h3><p>Nafarroako Bardeak: Pisquerra (465 m) eta Rallón (493 m), paisaia lehor ikusgarrian.</p>
+      </article>
+      <article class="route reveal" style="background-image:url('https://images.unsplash.com/photo-1551632811-561732d1e306?w=900&q=80&auto=format&fit=crop')">
+        <div class="route__top"><span class="route__tag">Abendua 13</span></div>
+        <h3>Castrovalnera</h3><p>Castrovalnera (1.718 m), urteko azken irteera handietako bat.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band band--cream" id="jardunaldiak">
+  <div class="band__inner">
+    <div class="head reveal"><span class="kicker">Jardunaldiak</span><h2>Mendi<br>jardunaldiak</h2>
+      <p>Hitzaldiak, tailerrak eta jardunaldi bereziak.</p>
+    </div>
+    <div class="routes" id="jardunaldiakGrid">
+      <article class="route reveal" style="background-image:url('https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?w=900&q=80&auto=format&fit=crop')">
+        <div class="route__top"><span class="route__tag">Azaroa 3·10·17·24</span></div>
+        <h3>Mendi jardunaldiak</h3><p>Azaroko lau asteartez, mendiari buruzko hitzaldi eta jardunaldien zikloa.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band band--cream-2" id="wikiloc">
+  <div class="band__inner">
+    <div class="head reveal"><span class="kicker">Ibilbideak</span><h2>Gure<br>Wikiloc bilduma</h2>
+      <p>BMTrekin egindako ibilbideak, bazkideek partekatutakoak eta etxetik gertu egin daitezkeen txangoak. Deskargatu track-a edo ikusi ibilbidea Wikilocen.</p>
+    </div>
+    <div class="wiki-search reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      <input type="search" id="wikiSearch" placeholder="Bilatu ibilbidea izenaren arabera…" aria-label="Bilatu ibilbidea">
+    </div>
+    <p class="wiki-empty" id="wikiEmpty">Ez da bat datorren ibilbiderik aurkitu.</p>
+    <div class="wiki-rail-wrap"><button class="wiki-arrow prev" id="wikiPrev" type="button" aria-label="Aurrekoa">&#8249;</button>
+    <div class="wiki-rail" id="wikiGrid">
+      <article class="wiki-card reveal" data-wtitle="basauri – gorbeia gauez">
+        <div class="wiki-card__map"><svg class="wiki-topo" viewBox="0 0 400 88" preserveAspectRatio="none" aria-hidden="true"><path d="M-10,60 C60,40 120,66 200,48 C280,32 340,58 410,42"/><path d="M-10,72 C60,54 120,80 200,60 C280,46 340,70 410,56"/></svg><span class="wiki-diff zaila">Zaila</span></div>
+        <div class="wiki-card__b"><h3>Basauri – Gorbeia gauez</h3><div class="wiki-meta"><span class="wiki-lvl zaila">Zailtasuna: <b>Zaila</b></span><span class="wiki-num"><b>41,4</b> km</span><span class="wiki-num up"><b>2.118</b> m &#8593;</span><span class="wiki-num down"><b>1.223</b> m &#8595;</span></div><a class="btn btn--ghost-dark" href="https://es.wikiloc.com/rutas-senderismo/marcha-nocturna-basauri-gorbea-10021132" target="_blank" rel="noopener">Wikiloc-en ikusi</a></div>
+      </article>
+      <article class="wiki-card reveal" data-wtitle="mugarriz mugarri basauri">
+        <div class="wiki-card__map"><svg class="wiki-topo" viewBox="0 0 400 88" preserveAspectRatio="none" aria-hidden="true"><path d="M-10,58 C70,44 130,62 210,46 C290,34 350,56 410,44"/><path d="M-10,70 C70,56 130,74 210,58 C290,46 350,68 410,56"/></svg><span class="wiki-diff ertaina">Ertaina</span></div>
+        <div class="wiki-card__b"><h3>Mugarriz mugarri Basauri</h3><div class="wiki-meta"><span class="wiki-lvl ertaina">Zailtasuna: <b>Ertaina</b></span><span class="wiki-num"><b>—</b> km</span><span class="wiki-num up"><b>—</b> m &#8593;</span><span class="wiki-num down"><b>—</b> m &#8595;</span></div><a class="btn btn--ghost-dark" href="https://es.wikiloc.com/rutas-senderismo/basauri-mugarriz-mugarri-66993395" target="_blank" rel="noopener">Wikiloc-en ikusi</a></div>
+      </article>
+      <article class="wiki-card reveal" data-wtitle="basauriko bira">
+        <div class="wiki-card__map"><svg class="wiki-topo" viewBox="0 0 400 88" preserveAspectRatio="none" aria-hidden="true"><path d="M-10,64 C60,36 120,70 200,42 C280,24 340,60 410,38"/><path d="M-10,76 C60,48 120,82 200,54 C280,36 340,72 410,50"/></svg><span class="wiki-diff ertaina">Ertaina</span></div>
+        <div class="wiki-card__b"><h3>Basauriko Bira</h3><div class="wiki-meta"><span class="wiki-lvl ertaina">Zailtasuna: <b>Ertaina</b></span><span class="wiki-num"><b>—</b> km</span><span class="wiki-num up"><b>—</b> m &#8593;</span><span class="wiki-num down"><b>—</b> m &#8595;</span></div><a class="btn btn--ghost-dark" href="https://es.wikiloc.com/rutas-senderismo/basauriko-bira-kukurrustu-oiarkrutze-malmasin-casco-titigana-san-bizente-titigane-217422520" target="_blank" rel="noopener">Wikiloc-en ikusi</a></div>
+      </article>
+    </div>
+    <button class="wiki-arrow next" id="wikiNext" type="button" aria-label="Hurrengoa">&#8250;</button>
+    </div>
+  </div>
+</section>
+
+<section class="band band--dark" id="egutegia">
+  <svg class="topo" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true" style="opacity:.07">
+    <path d="M-50,150 C250,90 500,210 750,140 C950,85 1100,170 1260,120" stroke="#F7C40C"/>
+    <path d="M-50,250 C250,190 500,310 750,240 C950,185 1100,270 1260,220" stroke="#F7C40C"/>
+    <path d="M-50,350 C250,290 500,410 750,340 C950,285 1100,370 1260,320" stroke="#F7C40C"/>
+  </svg>
+  <div class="band__inner">
+    <div class="head reveal"><span class="kicker">Egutegia eta ordutegiak</span><h2>Datozen<br>jarduerak</h2>
+      <p>Aurten geratzen diren jarduerak, hurbilenetik urrunenera. Irteera bakoitzaren ordua eta jasotze-puntuak iragarki zehatzean adierazten dira beti.</p>
+    </div>
+    <div class="cal-list reveal" id="egutegiaList">
+      <div class="cal-row" data-act="ir-bidarrai-2026"><div class="date">12–13<small>Iraila</small></div><div class="what">Iparraldeko ehun mendiak<span>Iparla – Behorlegi</span></div><div class="lvl ir">Irteera</div></div>
+      <div class="cal-row" data-act="ir-besaide-2026"><div class="date">20<small>Iraila</small></div><div class="what">Oroimenaren eguna Besaiden<span>Irteera</span></div><div class="lvl ir">Irteera</div></div>
+      <div class="cal-row" data-act="ir-bardenak-2026"><div class="date">3–4<small>Urria</small></div><div class="what">Bardeak / Las Bardenas<span>Irteera</span></div><div class="lvl ir">Irteera</div></div>
+      <div class="cal-row" data-act="ja-mendi-jardunaldiak-2026"><div class="date">3·10·17·24<small>Azaroa</small></div><div class="what">Mendi jardunaldiak<span>Jardunaldia</span></div><div class="lvl ja">Jardunaldia</div></div>
+      <div class="cal-row" data-act="ir-malmasin-2026"><div class="date">8<small>Azaroa</small></div><div class="what">Irteera historikoa Malmasin inguruan<span>Irteera</span></div><div class="lvl ir">Irteera</div></div>
+      <div class="cal-row" data-act="ir-castrovalnera-2026"><div class="date">13<small>Abendua</small></div><div class="what">Castrovalnera (1.718 m)<span>Irteera</span></div><div class="lvl ir">Irteera</div></div>
+      <div class="cal-row" data-act="ir-bazkaria-2026"><div class="date">20<small>Abendua</small></div><div class="what">Adiskidetasunaren bazkaria<span>Ekitaldia</span></div><div class="lvl ir">Irteera</div></div>
+      <div class="cal-row" data-act="ir-agur-2026"><div class="date">31<small>Abendua</small></div><div class="what">Agur urteari Gorbeian<span>Irteera</span></div><div class="lvl ir">Irteera</div></div>
+    </div>
+    <button class="btn btn--ghost-y" id="egutegiaBtn" aria-haspopup="dialog">Egutegi osoa ikusi (2026)</button>
+  </div>
+</section>
+
+<section class="band band--cream" id="aterpea">
+  <div class="band__inner">
+    <div class="aterpe-wrap">
+      <div class="head head--center reveal"><span class="kicker">Aterpea</span><h2>Gure babesa<br>mendian</h2>
+        <p>Gure aterpeak banaka alokatu daitezkeen bi gune ditu: <b>Aterpe handia</b> eta <b>Aterpe txikia</b>. Mendi giroan, egonaldietarako eta talde-irteeretarako leku aproposa.</p>
+      </div>
+      <div class="carousel refuge-car reveal" id="aterpeaCar">
+        <div class="carousel__track"><div class="carousel__slide" style="background-image:url('/img/aterpea/slide-01.jpg')"></div><div class="carousel__slide" style="background-image:url('/img/aterpea/slide-02.jpg')"></div>
+          <div class="carousel__slide" style="background-image:url('/img/aterpea/slide-03.jpg')"></div>
+          <div class="carousel__slide" style="background-image:url('/img/aterpea/slide-04.jpg')"></div>
+          <div class="carousel__slide" style="background-image:url('/img/aterpea/slide-05.jpg')"></div>
+          <div class="carousel__slide" style="background-image:url('/img/aterpea/slide-06.jpg')"></div>
+          <div class="carousel__slide" style="background-image:url('/img/aterpea/slide-07.jpg')"></div>
+          <div class="carousel__slide" style="background-image:url('/img/aterpea/slide-08.jpg')"></div>
+        </div>
+        <button class="carousel__nav prev" type="button" aria-label="Aurrekoa">&#8249;</button>
+        <button class="carousel__nav next" type="button" aria-label="Hurrengoa">&#8250;</button>
+        <div class="carousel__dots"><span class="on"></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      </div>
+      <div class="reveal">
+        <div class="zonak">
+          <div class="zona"><img class="zona-img" src="/img/aterpea/handia.jpg" alt="Aterpe handia" loading="lazy"><h4>Aterpe handia</h4><div class="plaza">24 plaza</div></div>
+          <div class="zona"><img class="zona-img" src="/img/aterpea/txikia.jpg" alt="Aterpe txikia" loading="lazy"><h4>Aterpe txikia</h4><div class="plaza">12 plaza</div></div>
+        </div>
+        <div class="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg><span><b>Erreserbak aurrez aurre soilik.</b> Aterpea erreserbatzeko, klubaren egoitzara etorri behar da. Web bidez ezin da erreserbatu.</span></div>
+        <div class="aterpe-bars">
+        <button class="historia__btn aterpe-bar" id="aterpeHistoriaBtn" aria-haspopup="dialog">
+          <span><span class="historia__k">Ezagutu gure jatorria</span>Aterpearen historia</span>
+          <svg class="chev chev--right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+        <button class="historia__btn aterpe-bar" id="aterpeTarifakBtn" aria-haspopup="dialog">
+          <span><span class="historia__k">Prezioak</span>Tarifak</span>
+          <svg class="chev chev--right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+        <button class="historia__btn aterpe-bar" id="aterpeArauakBtn" aria-haspopup="dialog">
+          <span><span class="historia__k">Erabilera-arauak</span>Arauak</span>
+          <svg class="chev chev--right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+        </div>
+        <button class="btn btn--primary aterpe-calc-btn" id="openAterpeCalc">Erreserbaren aurrekontua kalkulatu</button>
+      </div>
+    </div>
+      <div class="aterpe-map reveal">
+        <div class="head"><span class="kicker">Kokapena</span><h2>Non dago aterpea</h2>
+          <p>Iondokorta aterpea, Gorbeia inguruan (Zeanuri, Bizkaia).</p></div>
+        <div class="aterpe-map__frame">
+          <iframe src="https://www.google.com/maps?q=43.0562976,-2.7749417&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Iondokorta aterpearen kokapena" allowfullscreen></iframe>
+        </div>
+        <div class="aterpe-map__foot">
+          <span class="aterpe-map__addr"><b>Iondokorta aterpea</b>Zeanuri (Bizkaia) · 43.0563, -2.7749</span>
+          <a class="btn btn--dark" href="https://maps.app.goo.gl/xb4Gk5muDRwSDGpz7" target="_blank" rel="noopener">Google Maps-en ireki</a>
+        </div>
+      </div>
+  </div>
+</section>
+
+<section class="band band--cream-3" id="materiala">
+  <div class="band__inner">
+    <div class="head reveal"><span class="kicker">Material alokairua</span><h2>Neguko<br>materiala</h2>
+      <p>Bazkideentzat, neguko mendirako materiala alokagai. Alokairua <b>aurrez aurre soilik</b> egiten da klubaren egoitzan, ez web bidez.</p>
+    </div>
+    <div class="historia arauak-acc reveal">
+      <button class="historia__btn" id="materialArauakBtn" aria-expanded="false" aria-controls="materialArauakPanel">
+        <span><span class="historia__k">Erabilera-arauak</span>Arauak</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="historia__panel" id="materialArauakPanel">
+        <div class="historia__wrap"><div class="historia__inner arauak-inner">
+    <div class="arauak">
+      <div class="arau"><b>Lehentasuna</b>Klubak antolatutako irteera ofizialek lehentasuna dute materiala alokatzeko.</div>
+      <div class="arau"><b>Itzulketa</b>Materiala hartutako egoera berean itzuli behar da. Apurtu edo galduz gero, ordezkapen-neurriak hartuko dira.</div>
+      <div class="arau"><b>Erantzukizuna</b>BMTk eta Zuzendaritza Batzordeak ez dute erantzukizunik materiala gaizki erabiltzeagatik gerta daitezkeen istripuetan.</div>
+      <div class="arau"><b>Epea</b>Asteazkenetan alokatzen da, aste baterako. Hurrengo asteazkenean itzuli behar da; bestela, fidantzatik kenduko da.</div>
+      <div class="arau"><b>Baldintza</b>Ez zaie material berririk alokatuko aurrekoa itzuli ez duten bazkideei.</div>
+      <div class="arau"><b>Ordutegia</b>Alokairu-egunak: asteazkenak, 19:00–21:00.</div>
+    </div>
+        </div></div>
+      </div>
+    </div>
+    <div class="mat-grid reveal" id="materialGrid">
+      <div class="mat-card"><img src="/img/materiala/kranpoiak.jpg" alt="Kranpoiak"><div class="mat-card__b"><h3>Kranpoiak</h3><div class="mat-card__price">3 €<small>astea</small></div></div></div>
+      <div class="mat-card"><img src="/img/materiala/erraketak.jpg" alt="Erraketak"><div class="mat-card__b"><h3>Erraketak</h3><div class="mat-card__price">3 €<small>astea</small></div></div></div>
+      <div class="mat-card"><img src="/img/materiala/pioletak.jpg" alt="Pioletak"><div class="mat-card__b"><h3>Pioletak</h3><div class="mat-card__price">3 €<small>astea</small></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="band band--dark" id="arropa">
+  <svg class="topo" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true" style="opacity:.06">
+    <path d="M-50,200 C250,140 500,260 750,190 C950,135 1100,220 1260,170" stroke="#F7C40C"/>
+    <path d="M-50,300 C250,240 500,360 750,290 C950,235 1100,320 1260,270" stroke="#F7C40C"/>
+    <path d="M-50,400 C250,340 500,460 750,390 C950,335 1100,420 1260,370" stroke="#F7C40C"/>
+  </svg>
+  <div class="band__inner">
+    <div class="denda reveal">
+      <div class="denda__media">
+<div class="carousel" id="kamisetaCar">
+        <div class="carousel__track">
+          <div class="carousel__slide" style="background-image:url('/img/denda/kamiseta-1.jpg')"></div>
+          <div class="carousel__slide" style="background-image:url('/img/denda/kamiseta-2.jpg')"></div>
+        </div>
+        <button class="carousel__nav prev" type="button" aria-label="Aurrekoa">&#8249;</button>
+        <button class="carousel__nav next" type="button" aria-label="Hurrengoa">&#8250;</button>
+        <div class="carousel__dots"><span class="on"></span><span></span></div>
+        <span class="shop-tag" style="z-index:2">Kamiseta</span>
+      </div>
+      </div>
+      <div class="denda__info">
+        <span class="denda__script">Gure produktua</span>
+        <h3 class="denda__title">BMT Kamiseta</h3>
+        <div class="denda__rule"></div>
+        <p class="denda__desc">Baskonia Mendi Taldearen kamiseta ofiziala, klubaren armarriarekin. Mendirako zein egunerokorako, bazkide eta lagunentzat.</p>
+        <div class="denda__sizes" id="dendaSizesBox"><span>S</span><span>M</span><span>L</span><span>XL</span></div>
+        <div class="denda__buy">
+          <div class="denda__price"><span>Prezioa</span><b id="dendaPriceVal">18 €</b></div>
+          <div class="denda__where"><span>Non</span><b id="dendaWhereVal" data-i18n-skip="true">Egoitzan</b></div>
+        </div>
+      </div>
+    </div>
+    <div class="note reveal" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.22);color:#fff;margin-top:2rem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg><span><b>Ezin da web bidez erosi.</b> Produktuak klubaren egoitzan daude eskuragarri, aurrez aurre.</span></div>
+  </div>
+</section>
+
+<section class="band band--cream-2" id="galeria">
+  <div class="band__inner">
+    <div class="head reveal"><span class="kicker">Argazki-galeria</span><h2>Mendiko<br>uneak</h2><p>Gure mendi-irteeren, ikastaroen eta elkarte-bizitzaren une onenak.</p></div>
+<div class="gyears reveal">
+      <button class="gyear-tab on" data-year="2026">2026</button>
+      <button class="gyear-tab" data-year="2025">2025</button>
+      <!-- URTE BERRIA GEHITZEKO: kopiatu goiko botoi bat data-year berriarekin eta beheko .gyear-panel oso bat data-year berdinarekin. -->
+    </div>
+    <div class="gyear-panel on" data-year="2026">
+      <div class="carousel gallery-car reveal" id="gal2026">
+        <div class="carousel__track">
+          <div class="carousel__slide"><div class="gcar-grid"><figure class="gphoto"><img src="/img/galeria/2026/foto-01.jpg" alt="Baskonia Mendi Taldea 2026" loading="lazy"></figure><figure class="gphoto"><img src="/img/galeria/2026/foto-02.jpg" alt="Baskonia Mendi Taldea 2026" loading="lazy"></figure><figure class="gphoto"><img src="/img/galeria/2026/foto-03.jpg" alt="Baskonia Mendi Taldea 2026" loading="lazy"></figure><figure class="gphoto"><img src="/img/galeria/2026/foto-04.jpg" alt="Baskonia Mendi Taldea 2026" loading="lazy"></figure></div></div>
+          <div class="carousel__slide"><div class="gcar-grid"><figure class="gphoto"><img src="/img/galeria/2026/foto-05.jpg" alt="Baskonia Mendi Taldea 2026" loading="lazy"></figure><figure class="gphoto"><img src="/img/galeria/2026/foto-06.jpg" alt="Baskonia Mendi Taldea 2026" loading="lazy"></figure><figure class="gphoto"><img src="/img/galeria/2026/foto-07.jpg" alt="Baskonia Mendi Taldea 2026" loading="lazy"></figure><figure class="gphoto"><img src="/img/galeria/2026/foto-08.jpg" alt="Baskonia Mendi Taldea 2026" loading="lazy"></figure></div></div>
+          <div class="carousel__slide"><div class="gcar-grid"><figure class="gphoto"><img src="/img/galeria/2026/foto-09.jpg" alt="Baskonia Mendi Taldea 2026" loading="lazy"></figure><figure class="gphoto"><img src="/img/galeria/2026/foto-10.jpg" alt="Baskonia Mendi Taldea 2026" loading="lazy"></figure><figure class="gphoto"><img src="/img/galeria/2026/foto-11.jpg" alt="Baskonia Mendi Taldea 2026" loading="lazy"></figure><figure class="gphoto"><img src="/img/galeria/2026/foto-12.jpg" alt="Baskonia Mendi Taldea 2026" loading="lazy"></figure></div></div>
+          <div class="carousel__slide"><div class="gcar-grid"><figure class="gphoto"><img src="/img/galeria/2026/foto-13.jpg" alt="Baskonia Mendi Taldea 2026" loading="lazy"></figure><figure class="gphoto"><img src="/img/galeria/2026/foto-14.jpg" alt="Baskonia Mendi Taldea 2026" loading="lazy"></figure><figure class="gphoto"><img src="/img/galeria/2026/foto-15.jpg" alt="Baskonia Mendi Taldea 2026" loading="lazy"></figure><figure class="gphoto"><img src="/img/galeria/2026/foto-16.jpg" alt="Baskonia Mendi Taldea 2026" loading="lazy"></figure></div></div>
+          <div class="carousel__slide"><div class="gcar-grid"><figure class="gphoto"><img src="/img/galeria/2026/foto-17.jpg" alt="Baskonia Mendi Taldea 2026" loading="lazy"></figure><figure class="gphoto"><img src="/img/galeria/2026/foto-18.jpg" alt="Baskonia Mendi Taldea 2026" loading="lazy"></figure><figure class="gphoto"><img src="/img/galeria/2026/foto-19.jpg" alt="Baskonia Mendi Taldea 2026" loading="lazy"></figure><figure class="gphoto"><img src="/img/galeria/2026/foto-20.jpg" alt="Baskonia Mendi Taldea 2026" loading="lazy"></figure></div></div>
+          <div class="carousel__slide"><div class="gcar-grid"><figure class="gphoto"><img src="/img/galeria/2026/foto-21.jpg" alt="Baskonia Mendi Taldea 2026" loading="lazy"></figure><figure class="gphoto"><img src="/img/galeria/2026/foto-22.jpg" alt="Baskonia Mendi Taldea 2026" loading="lazy"></figure><figure class="gphoto"><img src="/img/galeria/2026/foto-23.jpg" alt="Baskonia Mendi Taldea 2026" loading="lazy"></figure><figure class="gphoto"><img src="/img/galeria/2026/foto-24.jpg" alt="Baskonia Mendi Taldea 2026" loading="lazy"></figure></div></div>
+          <div class="carousel__slide"><div class="gcar-grid"><figure class="gphoto"><img src="/img/galeria/2026/foto-25.jpg" alt="Baskonia Mendi Taldea 2026" loading="lazy"></figure><figure class="gphoto"><img src="/img/galeria/2026/foto-26.jpg" alt="Baskonia Mendi Taldea 2026" loading="lazy"></figure><figure class="gphoto"><img src="/img/galeria/2026/foto-27.jpg" alt="Baskonia Mendi Taldea 2026" loading="lazy"></figure><figure class="gphoto"><img src="/img/galeria/2026/foto-28.jpg" alt="Baskonia Mendi Taldea 2026" loading="lazy"></figure></div></div>
+          <div class="carousel__slide"><div class="gcar-grid"><figure class="gphoto"><img src="/img/galeria/2026/foto-29.jpg" alt="Baskonia Mendi Taldea 2026" loading="lazy"></figure><figure class="gphoto"><img src="/img/galeria/2026/foto-30.jpg" alt="Baskonia Mendi Taldea 2026" loading="lazy"></figure><figure class="gphoto"><img src="/img/galeria/2026/foto-31.jpg" alt="Baskonia Mendi Taldea 2026" loading="lazy"></figure><figure class="gphoto"><img src="/img/galeria/2026/foto-32.jpg" alt="Baskonia Mendi Taldea 2026" loading="lazy"></figure></div></div>
+          <div class="carousel__slide"><div class="gcar-grid"><figure class="gphoto"><img src="/img/galeria/2026/foto-33.jpg" alt="Baskonia Mendi Taldea 2026" loading="lazy"></figure><figure class="gphoto"><img src="/img/galeria/2026/foto-34.jpg" alt="Baskonia Mendi Taldea 2026" loading="lazy"></figure></div></div>
+        </div>
+        <button class="carousel__nav prev" type="button" aria-label="Aurrekoa">‹</button>
+        <button class="carousel__nav next" type="button" aria-label="Hurrengoa">›</button>
+        <div class="carousel__dots"><span class="on"></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      </div>
+    </div>
+    <div class="gyear-panel" data-year="2025">
+      <div class="carousel gallery-car reveal" id="gal2025">
+        <div class="carousel__track">
+          <div class="carousel__slide"><div class="gcar-grid"><figure class="gphoto"><img src="/img/galeria/2025/foto-01.jpg" alt="Baskonia Mendi Taldea 2025" loading="lazy"></figure><figure class="gphoto"><img src="/img/galeria/2025/foto-02.jpg" alt="Baskonia Mendi Taldea 2025" loading="lazy"></figure><figure class="gphoto"><img src="/img/galeria/2025/foto-03.jpg" alt="Baskonia Mendi Taldea 2025" loading="lazy"></figure><figure class="gphoto"><img src="/img/galeria/2025/foto-04.jpg" alt="Baskonia Mendi Taldea 2025" loading="lazy"></figure></div></div>
+          <div class="carousel__slide"><div class="gcar-grid"><figure class="gphoto"><img src="/img/galeria/2025/foto-05.jpg" alt="Baskonia Mendi Taldea 2025" loading="lazy"></figure><figure class="gphoto"><img src="/img/galeria/2025/foto-06.jpg" alt="Baskonia Mendi Taldea 2025" loading="lazy"></figure><figure class="gphoto"><img src="/img/galeria/2025/foto-07.jpg" alt="Baskonia Mendi Taldea 2025" loading="lazy"></figure><figure class="gphoto"><img src="/img/galeria/2025/foto-08.jpg" alt="Baskonia Mendi Taldea 2025" loading="lazy"></figure></div></div>
+        </div>
+        <button class="carousel__nav prev" type="button" aria-label="Aurrekoa">‹</button>
+        <button class="carousel__nav next" type="button" aria-label="Hurrengoa">›</button>
+        <div class="carousel__dots"><span class="on"></span><span></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band band--dark" id="federazioa">
+  <svg class="topo" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true" style="opacity:.06">
+    <path d="M-50,400 C250,340 500,460 750,390 C950,335 1100,420 1260,370" stroke="#F7C40C"/>
+    <path d="M-50,470 C250,410 500,530 750,460 C950,405 1100,490 1260,440" stroke="#F7C40C"/>
+  </svg>
+  <div class="band__inner">
+    <div class="fed">
+      <div class="reveal">
+        <span class="kicker">Federazioa</span><h2>Federatu</h2>
+        <p style="margin-top:1rem;opacity:.9">Mendia gustuko baduzu, bere alderdi guztietan (mendizaletasuna, eskalada, rokodromoa, alpinismoa, arroila-jaitsierak, eskia, martxa nordikoa, espeleologia), komeni da federatzea hainbat onura izateko:</p>
+        <ul>
+          <li>Deskontuak mendiko aterpetxeetan</li>
+          <li>Deskontuak zenbait saltokitan</li>
+          <li>Osasun-laguntzaren estaldura (istripu-asegurua)</li>
+          <li>Pyrenaica aldizkaria</li>
+        </ul>
+        <p style="opacity:.9">Federatu BASKONIA M.T.ren bidez: bete klubaren egoitzan emango dizuten inprimakia edo hemen deskarga dezakezuna. Behin beteta, eraman klubera eta guk tramitatuko dugu.</p>
+      </div>
+      <div class="fed__card reveal">
+        <h3>Zenbat kostatuko litzaizuke?</h3>
+        <p>Egin zure federazioaren simulazioa: aukeratu nahi duzuna, ikusi zer estaltzen duen eta sortu dokumentu bat klubera eramateko.</p>
+        <button class="btn btn--primary" id="openCalc" style="margin-bottom:.8rem">Federatu nahi duzu?</button>
+        <button class="btn btn--ghost-y" id="fedPrezioakBtn" type="button" aria-haspopup="dialog">Federatzeko prezioak</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band band--cream" id="bus-geltokiak">
+  <div class="band__inner">
+    <div class="head reveal"><span class="kicker">Garraioa</span><h2>Bus<br>geltokiak</h2>
+      <p>Baskonia Mendi Taldearen irteeretarako ohiko autobus-geltokiak. Sakatu geltoki bakoitza bere kokapena mapan irekitzeko.</p>
+    </div>
+    <div class="bus-grid reveal">
+      <div class="bus-col">
+        <h3 class="bus-city">Bilbo</h3>
+        <ul class="bus-list">
+          <li><a class="bus-stop" href="https://maps.app.goo.gl/6yEuFYo6pg1uRNyr5" target="_blank" rel="noopener"><svg class="bus-pin" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg><span>Abando</span></a></li>
+          <li><a class="bus-stop" href="https://maps.app.goo.gl/q83N8dmU2bjoPdoj6" target="_blank" rel="noopener"><svg class="bus-pin" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg><span>Begoña</span></a></li>
+        </ul>
+      </div>
+      <div class="bus-col">
+        <h3 class="bus-city">Basauri</h3>
+        <ul class="bus-list">
+          <li><a class="bus-stop" href="https://maps.app.goo.gl/3eBGsVHuzoM8JxHh9" target="_blank" rel="noopener"><svg class="bus-pin" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg><span>Kalero</span></a></li>
+          <li><a class="bus-stop" href="https://maps.app.goo.gl/EPR9RVvgizJjwQgh6" target="_blank" rel="noopener"><svg class="bus-pin" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg><span>San Miguel</span></a></li>
+          <li><a class="bus-stop" href="https://maps.app.goo.gl/ho18X42ejURTRrN28" target="_blank" rel="noopener"><svg class="bus-pin" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg><span>Miradores</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="band band--dark" id="app">
+  <div class="band__inner">
+    <div class="appdl reveal">
+      <div class="appdl__icon" role="img" aria-label="BMT aplikazioaren ikonoa"></div>
+      <div class="appdl__txt">
+        <span class="kicker">Aplikazioa</span>
+        <h2>Eraman BMT<br>beti zurekin</h2>
+        <p>Instalatu gure webgunea aplikazio gisa <b>mobilean</b> edo programa gisa <b>ordenagailuan</b>: ikono propioa, pantaila osoa eta sarerik gabe ere kontsultatzeko aukera. Ez du ia lekurik hartzen eta ez da denda batetik deskargatu behar.</p>
+        <div class="appdl__cta">
+          <button class="btn btn--primary" id="installBtn" type="button">Instalatu aplikazioa</button>
+          <button class="btn btn--ghost-y" id="installHelp" type="button">Nola egin?</button>
+        </div>
+        <p class="appdl__note" id="installNote"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band band--cream-2" id="harremana">
+  <div class="band__inner">
+    <div class="contact">
+      <div class="reveal">
+        <span class="kicker">Harremana</span><h2>Non gaude</h2>
+        <div class="contact__list">
+          <div class="contact__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><div><b>Egoitza</b>Doctor Fleming 2, 48970 Basauri (Bizkaia)</div></div>
+          <div class="contact__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><div><b>Telefonoa / WhatsApp</b><a href="tel:+34688810579">688 810 579</a></div></div>
+          <div class="contact__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg><div><b>E-posta</b><a href="mailto:BaskoniaMT@gmail.com">BaskoniaMT@gmail.com</a></div></div>
+          <div class="contact__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg><div><b>Instagram</b><a href="https://www.instagram.com/baskonia_menditaldea" target="_blank" rel="noopener">@baskonia_menditaldea</a></div></div>
+          <div class="contact__row"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.02h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23a8.23 8.23 0 0 1 8.24 8.24c0 4.54-3.7 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.53.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.44.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.84-.2-.48-.4-.42-.55-.43h-.47c-.16 0-.43.06-.65.31-.22.24-.86.84-.86 2.05s.88 2.38 1 2.54c.13.17 1.73 2.64 4.19 3.7.59.26 1.04.41 1.4.52.59.19 1.12.16 1.55.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.08.15-1.18-.06-.11-.22-.17-.47-.29z"/></svg><div><b>WhatsApp kanala</b><a href="https://whatsapp.com/channel/0029Vb75kvC2UPBK2bJvmC02" target="_blank" rel="noopener">Batu gure kanalera</a></div></div>
+        </div>
+      </div>
+      <div class="reveal"><iframe class="map" title="Baskonia Mendi Taldea - kokapena" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=43.2354426,-2.8840702&hl=eu&z=17&output=embed"></iframe></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-logo" role="img" aria-label="BMT logoa"></div>
+  <div class="foot-brand">Baskonia Mendi Taldea</div>
+  <div>1913tik mendian · Basauri (Bizkaia)</div>
+  <div class="foot-soc"><a href="https://www.instagram.com/baskonia_menditaldea?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener">Instagram</a><a href="https://whatsapp.com/channel/0029Vb75kvC2UPBK2bJvmC02" target="_blank" rel="noopener">WhatsApp</a></div>
+  <div class="foot-small">© 2026 Baskonia Mendi Taldea. Eskubide guztiak erreserbatuta.</div>
+</footer>
+
+<Modals />
+
+<div class="demo-bar" data-i18n-skip="true" title="Acceso directo al prototipo de Backoffice para la demostración">
+  <span class="demo-bar__dot"></span>
+  <span>BMT Live Demo</span>
+  <a href="/admin">Backoffice (/admin) →</a>
+</div>
+
+<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+  import { initHomeClient } from '../scripts/homeClient';
+  initHomeClient();
+</script>
+</body>
+</html>

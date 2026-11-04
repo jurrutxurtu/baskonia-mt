@@ -1,0 +1,17 @@
+{
+  "name": "baskonia-mendi-taldea-web",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Web oficial y Backoffice de Baskonia Mendi Taldea (Basauri · 1913)",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.1",
+    "astro": "^5.4.0"
+  }
+}
