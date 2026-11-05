@@ -15,5 +15,6 @@ dist/
 Thumbs.db
 .vscode/
 
-# Legacy monolithic sketch (10.2 MB with embedded Base64)
+# Legacy monolithic sketch (10.2 MB with embedded Base64) and local backups
 index-desired.html
+*.zip
